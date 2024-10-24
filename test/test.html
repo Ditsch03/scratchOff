@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VALIDATION</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="explanation">
+        <p>Enter something and apply checks to see if your text fits</p>
+    </section>
+    <section class="validationInputs">
+        <input class="yourInput" id="inputField" type="text">
+        <div class="checkboxes">
+            <input type="checkbox" id="fills" name="fills">
+            <label for="fills">contains Something</label><br>
+
+            <input type="checkbox" id="numeric" name="numeric">
+            <label for="numeric">Numeric only</label><br>
+
+            <input type="checkbox" id="between1020" name="between1020">
+            <label for="between1020">Between 10 and 20</label><br>
+
+            <input type="checkbox" id="cointainsspecific" name="containsspecific">
+            <label for="cointainsspecific">Contains X and 3 and $</label><br>
+        </div>
+        <button class="button" id="validateButton">Check your entry</button>
+    </section>
+    <section class="results">
+        <p id="feedback"></p>
+    </section>
+
+    <script>
+        document.getElementById('validateButton').addEventListener("click", function() {
+            const input = document.getElementById("inputField").value;
+            const feedback = document.getElementById("feedback");
+            let isValid = true;
+            let errorMessage = "";
+
+            if (document.getElementById("fills").checked) {
+                if (input.value === 0) {
+                    isValid = false;
+                    errorMessage += ("Input empty!");
+                }
+            }
+
+            if (document.getElementById("numeric").checked) {
+                if (!/^\d+$/.test(input)) {
+                    isValid = false;
+                    errorMessage += "Input is not numeric";
+                }
+            }
+            if (document.getElementById("between1020").checked) {
+                if (input.length < 10 || input.length > 20) {
+                    isValid = false;
+                    errorMessage += "Input is not between 10 and 20!";
+                }
+            }
+            if (document.getElementById("cointainsspecific").checked) {
+                if (!((input.includes("X") || (input.includes("x"))&& input.includes("3") && input.includes("$")))){
+                    isValid = false;
+                    errorMessage += "Input doesnt contain x, 3 and $.";
+                }
+            }
+            if (isValid) {
+                feedback.textContent = "Your input is valid!";
+            } else {
+                feedback.textContent = "Error " + errorMessage;
+            }
+        });
+    </script>
+</body>
+</html>
+

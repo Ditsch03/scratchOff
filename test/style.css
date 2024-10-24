@@ -1,0 +1,44 @@
+body{
+    font-family: Verdana;
+    padding: 5vw;
+    display: flex;
+    flex-direction: column;
+    gap: 50px
+}
+
+.explanation{
+    align-self: center;
+    font-size: 3vh;
+}
+
+.validationInputs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.yourInput{
+    flex: 1;
+    margin-right: 20px;
+    padding: 10px;
+    font-size: 16px;
+    max-width: 200px;
+    max-height: 20px;
+}
+.checkboxes {
+    display: flex;
+    flex-direction: column; /* Stack checkboxes vertically */
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+.checkboxes label {
+    margin-bottom: 5px;
+}
+.button{
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    max-width: 200px;
+    max-height: 40px;
+}

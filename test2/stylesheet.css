@@ -1,0 +1,22 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10vh;
+    width: 100vw;
+    height: 100vh;
+}
+
+.buttonSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.button{
+    width: 10vw;
+    height: 10vw;
+    font-size: 3vh;
+}

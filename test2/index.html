@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>testing stuff</title>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+  <main id="main">
+    <section class="buttonSection">
+      <button class="button" id="button">Click me</button>
+      <label for="button" id="label"></label>
+    </section>
+    <section class="InputSection">
+      <input id="input">
+      <label for="input" id="inputLabel">Set a Color. Enter it in the format: r g b</label>
+    </section>
+  </main>
+  <script>
+    const button = document.getElementById("button");
+    const main =document.getElementById("main");
+    const label = document.getElementById("label");
+    const inputField = document.getElementById("input")
+    let labelValue;
+
+    function getRandomColor(){
+        const r = Math.floor(Math.random()*256);
+        const g = Math.floor(Math.random()*256);
+        const b = Math.floor(Math.random()*256);
+        labelValue = `rgb(${r}, ${g}, ${b})`;
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+    function setColor(input){
+        const values = input.split(' ');
+        const r = Math.min(Math.max(parseInt(values[0]), 0), 255);
+        const g = Math.min(Math.max(parseInt(values[1]), 0), 255);
+        const b = Math.min(Math.max(parseInt(values[2]), 0), 255);
+
+        labelValue = `rgb(${r}, ${g}, ${b})`;
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    button.addEventListener("click", function() {
+        const randomColor = getRandomColor();
+        main.style.background = randomColor;
+        label.textContent=labelValue;
+            });
+
+    button.addEventListener("dblclick", function (){
+      label.textContent="You Suck!";
+    });
+
+    inputField.addEventListener("keypress", function (event){
+      if (event.key === "Enter"){
+        event.preventDefault();
+        const Color= setColor(inputField.value);
+        main.style.background = Color;
+        label.textContent=labelValue;
+        inputField.value=""
+    }});
+
+  </script>
+</body>
+</html>
